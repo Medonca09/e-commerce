@@ -4,13 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Magazine Hashtag</title>
 </head>
 <body>
-  <header></header>
+  <section id="carrinho" class="fixed top-0 right-[0px] bg-indigo-950 h-screen w-[360px] text-slate-200">
+    <div id="cabecalho-carrinho" class="flex justify-between m-4">
+      <p>Meu carrinho</p>
+      <button id="fechar-carrinho">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+    </div>
+    <section>
+      <p>Camisa Larga com Bolsos</p>
+      <p>Casaco Reto com Lã</p>
+      <p>Jaqueta com Efeito Camurça</p>
+    </section>
+    <p id="preco-total">$200</p>
+    <button class="bg-slate-200 text-slate-900 p-1">Finalizar Compra</button>
+  </section>
+  <header class="flex bg-indigo-950 p-2 justify-between">
+    <img class="h-16" src="./assets/logo/hashtag.svg" alt="Logo do Magazine Hashtag"/>
+    <div class="text-slate-200 flex gap-2 items-end mx-2">
+      <button id="abrir-carrinho"><i class="fa-solid fa-cart-shopping"></i></button>
+      <button><i class="fa-solid fa-user"></i></button>
+    </div>
+  </header>
   <main>
-    <section id="container-produto"></section>
+    <section id="container-produto" class="flex flex-wrap"></section>
   </main>
-  <script src="./main.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
