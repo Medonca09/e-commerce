@@ -1,3 +1,5 @@
+import { catalogo } from "./utilidades";
+
 function abrirCarrinho() {
     document.getElementById("carrinho").classList.add("right-[0px]");
     document.getElementById("carrinho").classList.remove("right-[-360px]");
@@ -14,4 +16,21 @@ export function inicializarCarrinho() {
 
     botaoFecharCarrinho.addEventListener('click', fecharCarrinho);
     botaoAbrirCarrinho.addEventListener('click', abrirCarrinho);
+}
+
+export function adicionarAoCarrinho(idProduto) {
+    const produto = catalogo.find(p => p.id === idProduto);
+    const containerProdutosCarrinho = document.getElementById('produtos-carrinho')
+    const cartaoProdutoCarrinho = `<article class="flex bg-slate-100 rounded-lg p-1 relative">
+    <button id="fechar-carrinho" class="absolute top-0 right-2">
+      <i class="fa-solid fa-circle-xmark text-slate-500 hover:text-red-700"></i>
+    </button>
+    <img src="./assets/img/${produto.imagem}" alt="${produto.nome}" class="h-24 rounded-lg"/>
+    <div class="py-2">
+      <P class="text-slate-900 text-xs">${produto.nome}</P>
+      <p class="text-slate-400">Tamanho: M</p>
+      <p class="text-green-700 text-lg">$${produto.preco}</p>
+    </div>
+  </article>`
+  containerProdutosCarrinho.innerHTML += cartaoProdutoCarrinho;
 }

@@ -13,22 +13,18 @@
 </head>
 
 <body class="bg-stone-200 flex flex-col">
-  <section id="carrinho" class="fixed top-0 right-[-360px] bg-slate-950 h-screen w-[360px] text-slate-200 z-50">
+  <section id="carrinho" class="fixed top-0 right-[-360px] bg-slate-950 h-screen w-[360px] text-slate-200 z-50 duration-200 border-l border-slate-200 p-5 flex flex-col justify-between">
     <div id="cabecalho-carrinho" class="flex justify-between m-4">
       <p>Meu carrinho</p>
       <button id="fechar-carrinho">
-        <i class="fa-solid fa-circle-xmark"></i>
+        <i class="fa-solid fa-circle-xmark hover:text-red-700"></i>
       </button>
     </div>
-    <section>
-      <p>Camisa Larga com Bolsos</p>
-      <p>Casaco Reto com Lã</p>
-      <p>Jaqueta com Efeito Camurça</p>
-    </section>
+    <section id="produtos-carrinho"></section>
     <p id="preco-total">$200</p>
     <button class="bg-slate-200 text-slate-900 p-1">Finalizar Compra</button>
   </section>
-  <header class="flex text-xl bg-slate-950 shadow-xl  shadow-slate-400 px-8 py-4 justify-between sticky top-0">
+  <header class="flex text-xl bg-slate-950 shadow-xl  shadow-slate-400 px-8 py-4 justify-between sticky top-0 z-10">
     <img class="h-16" src="./assets/logo/hashtag.svg" alt="Logo do Magazine Hashtag" />
     <div class="text-slate-200 flex gap-2 items-end mx-2">
       <button id="abrir-carrinho" class="mx-2"><i class="fa-solid fa-cart-shopping"></i></button>
