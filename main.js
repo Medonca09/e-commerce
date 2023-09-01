@@ -67,6 +67,7 @@ const catalogo = [
   },
 ];
 
+
 for (const produtoCatalago of catalogo){
   const cartaoProduto = `<div class="border-solid border-2 border-sky-500 w-44 m-2" id="card-produto-${produtoCatalago.id}">
 <img 
