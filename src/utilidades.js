@@ -64,3 +64,7 @@ export const catalogo = [
       feminino: true,
     },
   ];
+
+  export function salvarLocalStorage(chave, informacao){
+    localStorage.setItem(chave, informacao);
+  }
