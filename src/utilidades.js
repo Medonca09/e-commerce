@@ -66,5 +66,9 @@ export const catalogo = [
   ];
 
   export function salvarLocalStorage(chave, informacao){
-    localStorage.setItem(chave, informacao);
+    localStorage.setItem(chave, JSON.stringify(informacao));
+  }
+
+  export function lerLocalStorage(chave, informacao){
+    return JSON.parse(localStorage.getItem(chave));
   }
