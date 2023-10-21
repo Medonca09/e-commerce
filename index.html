@@ -13,7 +13,8 @@
 </head>
 
 <body class="bg-stone-200 flex flex-col">
-  <section id="carrinho" class="fixed top-0 right-[-360px] bg-slate-950 h-screen w-[360px] text-slate-200 z-50 duration-200 border-l border-slate-200 p-5 flex flex-col justify-between">
+  <section id="carrinho"
+    class="fixed top-0 right-[-360px] bg-slate-950 h-screen w-[360px] text-slate-200 z-50 duration-200 border-l border-slate-200 p-5 flex flex-col justify-between">
     <div id="cabecalho-carrinho" class="flex justify-between m-4">
       <p>Meu carrinho</p>
       <button id="fechar-carrinho">
@@ -31,7 +32,26 @@
       <button class="mr-2"><i class="fa-solid fa-user"></i></button>
     </div>
   </header>
-  <main>
+  <main class="flex flex-col items-center">
+    <section id="filtros" class="p-10 flex">
+      <div class="px-2">
+        <input id="exibir-todos" type="radio" name="filtro" class="peer hidden" checked>
+        <label for="exibir-todos"
+          class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-xl select-none cursor-pointer">Todos</label>
+      </div>
+      <div class="px-2">
+        <input id="exibir-masculinos" type="radio" name="filtro" class="peer hidden">
+        <label for="exibir-masculinos"
+          class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-xl select-none cursor-pointer">Masculino</label>
+      </div>
+      <div class="px-2">
+        <input id="exibir-femininos" type="radio" name="filtro" class="peer hidden">
+        <label for="exibir-femininos"
+          class="peer-checked:bg-slate-950 peer-checked:text-slate-200 peer-checked:font-bold p-2 rounded-xl select-none cursor-pointer">Feminino
+        </label>
+      </div>
+
+    </section>
     <section id="container-produto" class="flex flex-wrap p-10 justify-center gap-10"></section>
   </main>
   <script type="module" src="./main.js"></script>
