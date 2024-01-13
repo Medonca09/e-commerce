@@ -73,6 +73,10 @@ export const catalogo = [
     return JSON.parse(localStorage.getItem(chave));
   }
 
+  export function apagarDoLocalStorage(chave){
+    localStorage.removeItem(chave);
+  }
+
   export function desenharProdutoNoCarrinhoSimples(idProduto, idContainerHtml, quantidadeProduto){
     const produto = catalogo.find(p => p.id === idProduto);
   
@@ -86,7 +90,9 @@ export const catalogo = [
        'bg-stone-200', 
        'rounded-lg', 
        'p-1', 
-       'relative'
+       'relative',
+       'mb-2',
+       'w-96'
       ];
   
       for(const articleClass of articleClasses){
