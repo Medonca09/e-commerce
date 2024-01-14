@@ -1,9 +1,6 @@
-import { catalogo } from "./utilidades";
+import { catalogo, salvarLocalStorage, lerLocalStorage } from "./utilidades";
 
-const idsProdutoCarrinhoComQuantidade = {
-
-
-}
+const idsProdutoCarrinhoComQuantidade = lerLocalStorage('carrinho') ?? {};
 
 function abrirCarrinho() {
     document.getElementById("carrinho").classList.add("right-[0px]");
@@ -15,21 +12,34 @@ function fecharCarrinho() {
     document.getElementById("carrinho").classList.add("right-[-360px]");
 }
 
+function irParaCheckout(){
+  if (Object.keys(idsProdutoCarrinhoComQuantidade).length === 0){
+    return;
+  }
+  window.location.href = window.location.origin + "/checkout.html";
+}
+
 export function inicializarCarrinho() {
     const botaoFecharCarrinho = document.getElementById("fechar-carrinho");
     const botaoAbrirCarrinho = document.getElementById("abrir-carrinho");
+    const botoaIrParaCheckout = document.getElementById("finalizar-compra");
 
     botaoFecharCarrinho.addEventListener('click', fecharCarrinho);
     botaoAbrirCarrinho.addEventListener('click', abrirCarrinho);
+    botoaIrParaCheckout.addEventListener('click', irParaCheckout);
 }
 
 function removerDoCarrinho(idProduto){
   delete idsProdutoCarrinhoComQuantidade[idProduto];
+  salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
+  atualizarPrecoCarrinho();
   renderizarProdutoCarrinho();
 }
 
 function incrementarQuantidadeProduto(idProduto){
   idsProdutoCarrinhoComQuantidade[idProduto]++;
+  salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
+  atualizarPrecoCarrinho();
   atualizarInformacaoQuantidade(idProduto);
 }
 
@@ -39,6 +49,8 @@ function decrementarQuantidadeProduto(idProduto){
     return;
   }
   idsProdutoCarrinhoComQuantidade[idProduto]--;
+  salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
+  atualizarPrecoCarrinho();
   atualizarInformacaoQuantidade(idProduto);
 }
 
@@ -97,7 +109,7 @@ function desenharProdutoNoCarrinho(idProduto){
   .addEventListener('click', () => removerDoCarrinho(produto.id));
 }
 
-function renderizarProdutoCarrinho(){
+export function renderizarProdutoCarrinho(){
   const containerProdutosCarrinho = 
     document.getElementById('produtos-carrinho');
     containerProdutosCarrinho.innerHTML = '';
@@ -114,6 +126,17 @@ export function adicionarAoCarrinho(idProduto) {
       return;
     }
     idsProdutoCarrinhoComQuantidade[idProduto] = 1;
+    salvarLocalStorage('carrinho', idsProdutoCarrinhoComQuantidade);
     desenharProdutoNoCarrinho(idProduto);
+    atualizarPrecoCarrinho();
     
+}
+ 
+export function atualizarPrecoCarrinho(){
+    const precoCarrinho = document.getElementById("preco-total");
+    let precoTotalCarrinho = 0;
+    for(const idProdutoNoCarrinho in idsProdutoCarrinhoComQuantidade){
+      precoTotalCarrinho += catalogo.find((p) => p.id === idProdutoNoCarrinho).preco * idsProdutoCarrinhoComQuantidade[idProdutoNoCarrinho];
+    }
+    precoCarrinho.innerText = `Total: $${precoTotalCarrinho}`;
 }
